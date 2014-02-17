@@ -1,0 +1,20 @@
+<%+header%>
+<h2><a id="content" name="content"><%:Switch%></a></h2>
+<p><%:Switches lamp state%></p>
+<center>
+<%- if not rstate then -%>
+<form name="input" action="<%=controller%>/lamp/switch" method="get">
+    <input type="hidden" name="rstate" value="1" />
+    <input type="submit" value="<%:On%>" style="font-size:80px;width:70%;height:30%" />
+</form> 
+<p />
+<form name="input" action="<%=controller%>/lamp/switch" method="get">
+    <input type="hidden" name="rstate" value="0" />
+    <input type="submit" value="<%:Off%>" style="font-size:80px;width:70%;height:30%" />
+</form> 
+<%- else -%>
+<p style="font-size:80px"><%:Please wait - switching relay...%></p>
+<script type="text/javascript">setTimeout("location='<%=controller%>/lamp/switch'", 5000)</script>
+<%- end -%>
+</center>
+<%+footer%>
